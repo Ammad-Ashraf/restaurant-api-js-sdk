@@ -17,6 +17,15 @@ export class MenuController extends BaseController {
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<MenuItem[]>> {
     const req = this.createRequest('GET', '/menu');
-    return req.callAsJson(array(menuItemSchema), requestOptions);
+
+    // Parse as raw JSON first (no schema check yet)
+    const response = await req.callAsJson((json) => json, requestOptions);
+
+    // Fix shape: return only the array
+    return {
+      ...response,
+      result: response.result.data ?? []
+    };
   }
+
 }
