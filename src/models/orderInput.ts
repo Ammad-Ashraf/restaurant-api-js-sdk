@@ -13,11 +13,16 @@ import {
   typedExpandoObject,
   unknown,
 } from '../schema.js';
+import { CustomerDetails, customerDetailsSchema } from './customerDetails.js';
 import { Item, itemSchema } from './item.js';
+import { OrderType, orderTypeSchema } from './orderType.js';
 
 export interface OrderInput {
   items: Item[];
   tableNumber: number;
+  totalAmount: number;
+  orderType: OrderType;
+  customerDetails: CustomerDetails;
   additionalProperties?: Record<string, unknown>;
 }
 
@@ -25,6 +30,9 @@ export const orderInputSchema: Schema<OrderInput> = typedExpandoObject(
   {
     items: ['items', array(lazy(() => itemSchema))],
     tableNumber: ['tableNumber', number()],
+    totalAmount: ['totalAmount', number()],
+    orderType: ['orderType', orderTypeSchema],
+    customerDetails: ['customerDetails', lazy(() => customerDetailsSchema)],
   },
   'additionalProperties',
   optional(unknown())

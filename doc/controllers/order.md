@@ -20,7 +20,7 @@ const orderController = new OrderController(client);
 async placeANewOrder(
   body: OrderInput,
   requestOptions?: RequestOptions
-): Promise<ApiResponse<Order>>
+): Promise<ApiResponse<OrderResponse>>
 ```
 
 ## Parameters
@@ -32,7 +32,7 @@ async placeANewOrder(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`OrderResponse`](../../doc/models/order-response.md).
 
 ## Example Usage
 
@@ -40,9 +40,17 @@ This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The 
 const body: OrderInput = {
   items: [
     {
+      menuItem: 'menuItem0',
+      quantity: 22,
     }
   ],
   tableNumber: 0,
+  totalAmount: 16.6,
+  orderType: OrderType.Dinein,
+  customerDetails: {
+    contact: 'contact2',
+    address: 'address6',
+  },
 };
 
 try {
@@ -63,7 +71,7 @@ try {
 ```ts
 async getOrderHistory(
   requestOptions?: RequestOptions
-): Promise<ApiResponse<Order[]>>
+): Promise<ApiResponse<OrderHistoryResponse>>
 ```
 
 ## Parameters
@@ -74,7 +82,7 @@ async getOrderHistory(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`Order[]`](../../doc/models/order.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`OrderHistoryResponse`](../../doc/models/order-history-response.md).
 
 ## Example Usage
 

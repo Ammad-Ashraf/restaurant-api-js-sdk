@@ -5,7 +5,6 @@
  */
 
 import {
-  number,
   optional,
   Schema,
   string,
@@ -13,14 +12,14 @@ import {
   unknown,
 } from '../schema.js';
 
-export interface Item {
-  menuItem: string;
-  quantity: number;
+export interface CustomerDetails {
+  contact: string;
+  address: string;
   additionalProperties?: Record<string, unknown>;
 }
 
-export const itemSchema: Schema<Item> = typedExpandoObject(
-  { menuItem: ['menuItem', string()], quantity: ['quantity', number()] },
+export const customerDetailsSchema: Schema<CustomerDetails> = typedExpandoObject(
+  { contact: ['contact', string()], address: ['address', string()] },
   'additionalProperties',
   optional(unknown())
 );

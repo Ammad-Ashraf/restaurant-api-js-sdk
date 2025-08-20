@@ -1,26 +1,26 @@
 
-# Item
+# Customer Details
 
 *This model accepts additional fields of type unknown.*
 
 ## Structure
 
-`Item`
+`CustomerDetails`
 
 ## Fields
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `menuItem` | `string` | Required | - |
-| `quantity` | `number` | Required | - |
+| `contact` | `string` | Required | - |
+| `address` | `string` | Required | - |
 | `additionalProperties` | `Record<string, unknown>` | Optional | - |
 
 ## Example (as JSON)
 
 ```json
 {
-  "menuItem": "menuItem4",
-  "quantity": 62,
+  "contact": "contact8",
+  "address": "address0",
   "exampleAdditionalProperty": {
     "key1": "val1",
     "key2": "val2"

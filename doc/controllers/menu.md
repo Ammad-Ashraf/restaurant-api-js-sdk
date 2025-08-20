@@ -14,7 +14,7 @@ const menuController = new MenuController(client);
 ```ts
 async getAllMenuItems(
   requestOptions?: RequestOptions
-): Promise<ApiResponse<MenuItem[]>>
+): Promise<ApiResponse<MenuResponse>>
 ```
 
 ## Parameters
@@ -25,7 +25,7 @@ async getAllMenuItems(
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`MenuItem[]`](../../doc/models/menu-item.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `result` property of this instance returns the response data which is of type [`MenuResponse`](../../doc/models/menu-response.md).
 
 ## Example Usage
 

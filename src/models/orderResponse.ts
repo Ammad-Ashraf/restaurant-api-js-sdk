@@ -5,22 +5,26 @@
  */
 
 import {
-  number,
+  boolean,
+  lazy,
   optional,
   Schema,
-  string,
   typedExpandoObject,
   unknown,
 } from '../schema.js';
+import { Order, orderSchema } from './order.js';
 
-export interface Item {
-  menuItem: string;
-  quantity: number;
+export interface OrderResponse {
+  success?: boolean;
+  data?: Order;
   additionalProperties?: Record<string, unknown>;
 }
 
-export const itemSchema: Schema<Item> = typedExpandoObject(
-  { menuItem: ['menuItem', string()], quantity: ['quantity', number()] },
+export const orderResponseSchema: Schema<OrderResponse> = typedExpandoObject(
+  {
+    success: ['success', optional(boolean())],
+    data: ['data', optional(lazy(() => orderSchema))],
+  },
   'additionalProperties',
   optional(unknown())
 );

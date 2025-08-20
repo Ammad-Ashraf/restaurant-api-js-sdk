@@ -14,12 +14,19 @@ import {
   typedExpandoObject,
   unknown,
 } from '../schema.js';
-import { Item, itemSchema } from './item.js';
+import {
+  CustomerDetails1,
+  customerDetails1Schema,
+} from './customerDetails1.js';
+import { Item1, item1Schema } from './item1.js';
 
 export interface Order {
   id?: string;
-  items?: Item[];
+  items?: Item1[];
   tableNumber?: number;
+  totalAmount?: number;
+  orderType?: string;
+  customerDetails?: CustomerDetails1;
   status?: string;
   createdAt?: string;
   additionalProperties?: Record<string, unknown>;
@@ -28,8 +35,14 @@ export interface Order {
 export const orderSchema: Schema<Order> = typedExpandoObject(
   {
     id: ['_id', optional(string())],
-    items: ['items', optional(array(lazy(() => itemSchema)))],
+    items: ['items', optional(array(lazy(() => item1Schema)))],
     tableNumber: ['tableNumber', optional(number())],
+    totalAmount: ['totalAmount', optional(number())],
+    orderType: ['orderType', optional(string())],
+    customerDetails: [
+      'customerDetails',
+      optional(lazy(() => customerDetails1Schema)),
+    ],
     status: ['status', optional(string())],
     createdAt: ['createdAt', optional(string())],
   },

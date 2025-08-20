@@ -5,8 +5,7 @@
  */
 
 import { ApiResponse, RequestOptions } from '../core.js';
-import { MenuItem, menuItemSchema } from '../models/menuItem.js';
-import { array } from '../schema.js';
+import { MenuResponse, menuResponseSchema } from '../models/menuResponse.js';
 import { BaseController } from './baseController.js';
 
 export class MenuController extends BaseController {
@@ -15,17 +14,8 @@ export class MenuController extends BaseController {
    */
   async getAllMenuItems(
     requestOptions?: RequestOptions
-  ): Promise<ApiResponse<MenuItem[]>> {
+  ): Promise<ApiResponse<MenuResponse>> {
     const req = this.createRequest('GET', '/menu');
-
-    // Parse as raw JSON first (no schema check yet)
-    const response = await req.callAsJson((json) => json, requestOptions);
-
-    // Fix shape: return only the array
-    return {
-      ...response,
-      result: response.result.data ?? []
-    };
+    return req.callAsJson(menuResponseSchema, requestOptions);
   }
-
 }

@@ -5,9 +5,12 @@
  */
 
 import { ApiResponse, RequestOptions } from '../core.js';
-import { Order, orderSchema } from '../models/order.js';
+import {
+  OrderHistoryResponse,
+  orderHistoryResponseSchema,
+} from '../models/orderHistoryResponse.js';
 import { OrderInput, orderInputSchema } from '../models/orderInput.js';
-import { array } from '../schema.js';
+import { OrderResponse, orderResponseSchema } from '../models/orderResponse.js';
 import { BaseController } from './baseController.js';
 
 export class OrderController extends BaseController {
@@ -18,12 +21,12 @@ export class OrderController extends BaseController {
   async placeANewOrder(
     body: OrderInput,
     requestOptions?: RequestOptions
-  ): Promise<ApiResponse<Order>> {
+  ): Promise<ApiResponse<OrderResponse>> {
     const req = this.createRequest('POST', '/order/place-order');
     const mapped = req.prepareArgs({ body: [body, orderInputSchema] });
     req.header('Content-Type', 'application/json');
     req.json(mapped.body);
-    return req.callAsJson(orderSchema, requestOptions);
+    return req.callAsJson(orderResponseSchema, requestOptions);
   }
 
   /**
@@ -31,8 +34,8 @@ export class OrderController extends BaseController {
    */
   async getOrderHistory(
     requestOptions?: RequestOptions
-  ): Promise<ApiResponse<Order[]>> {
+  ): Promise<ApiResponse<OrderHistoryResponse>> {
     const req = this.createRequest('GET', '/order/history');
-    return req.callAsJson(array(orderSchema), requestOptions);
+    return req.callAsJson(orderHistoryResponseSchema, requestOptions);
   }
 }

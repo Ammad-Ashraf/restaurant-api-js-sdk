@@ -13,14 +13,17 @@ import {
   unknown,
 } from '../schema.js';
 
-export interface Item {
-  menuItem: string;
-  quantity: number;
+export interface Item1 {
+  menuItem?: string;
+  quantity?: number;
   additionalProperties?: Record<string, unknown>;
 }
 
-export const itemSchema: Schema<Item> = typedExpandoObject(
-  { menuItem: ['menuItem', string()], quantity: ['quantity', number()] },
+export const item1Schema: Schema<Item1> = typedExpandoObject(
+  {
+    menuItem: ['menuItem', optional(string())],
+    quantity: ['quantity', optional(number())],
+  },
   'additionalProperties',
   optional(unknown())
 );

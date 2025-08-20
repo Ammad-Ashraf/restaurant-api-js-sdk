@@ -16,6 +16,8 @@
 | `description` | `string \| undefined` | Optional | - |
 | `price` | `number \| undefined` | Optional | - |
 | `category` | `string \| undefined` | Optional | - |
+| `image` | `string \| undefined` | Optional | - |
+| `isAvailable` | `boolean \| undefined` | Optional | - |
 | `additionalProperties` | `Record<string, unknown>` | Optional | - |
 
 ## Example (as JSON)

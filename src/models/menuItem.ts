@@ -5,6 +5,7 @@
  */
 
 import {
+  boolean,
   number,
   optional,
   Schema,
@@ -19,6 +20,8 @@ export interface MenuItem {
   description?: string;
   price?: number;
   category?: string;
+  image?: string;
+  isAvailable?: boolean;
   additionalProperties?: Record<string, unknown>;
 }
 
@@ -29,6 +32,8 @@ export const menuItemSchema: Schema<MenuItem> = typedExpandoObject(
     description: ['description', optional(string())],
     price: ['price', optional(number())],
     category: ['category', optional(string())],
+    image: ['image', optional(string())],
+    isAvailable: ['isAvailable', optional(boolean())],
   },
   'additionalProperties',
   optional(unknown())

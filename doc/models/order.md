@@ -12,8 +12,11 @@
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `id` | `string \| undefined` | Optional | - |
-| `items` | [`Item[] \| undefined`](../../doc/models/item.md) | Optional | - |
+| `items` | [`Item1[] \| undefined`](../../doc/models/item-1.md) | Optional | - |
 | `tableNumber` | `number \| undefined` | Optional | - |
+| `totalAmount` | `number \| undefined` | Optional | - |
+| `orderType` | `string \| undefined` | Optional | - |
+| `customerDetails` | [`CustomerDetails1 \| undefined`](../../doc/models/customer-details-1.md) | Optional | - |
 | `status` | `string \| undefined` | Optional | - |
 | `createdAt` | `string \| undefined` | Optional | - |
 | `additionalProperties` | `Record<string, unknown>` | Optional | - |
@@ -25,7 +28,7 @@
   "_id": "_id6",
   "items": [
     {
-      "menuItemId": "menuItemId6",
+      "menuItem": "menuItem0",
       "quantity": 22,
       "exampleAdditionalProperty": {
         "key1": "val1",
@@ -34,8 +37,8 @@
     }
   ],
   "tableNumber": 60,
-  "status": "status4",
-  "createdAt": "2016-03-13T12:52:32.123Z",
+  "totalAmount": 211.76,
+  "orderType": "orderType0",
   "exampleAdditionalProperty": {
     "key1": "val1",
     "key2": "val2"
